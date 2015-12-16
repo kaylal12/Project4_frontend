@@ -11,9 +11,6 @@
 
   <header>
 
-  <div class="page-content">
-  </div>
-
     <div class="icon">
       <a href="#">HOME</a>
     </div>
@@ -21,7 +18,10 @@
     <div class="auth">
       <ul>
         <li id="login">
-          <a href="#">Register/Login</a>
+          <a href="#login">Login</a>
+        </li>
+        <li id="profile">
+          <a href="#profile">Profile</a>
         </li>
         <li id="logout">
           <a href="#">Logout</a>
@@ -31,14 +31,14 @@
 
     <div class="nav">
       <ul>
-        <li>
+        <!-- <li>
           <a href="#">About</a>
+        </li> -->
+        <li>
+          <a href="#find">Find an apt</a>
         </li>
         <li>
-          <a href="#">Find an apt</a>
-        </li>
-        <li>
-          <a href="#">List an apt</a>
+          <a href="#create">List an apt</a>
         </li>
       </ul>
     </div>
@@ -47,30 +47,78 @@
 
   <div class="page-content">
     <div class="home">
-      <div class="search-box">
-        <input id="search" type="text"></input>
-        <input value="Search" type="button"></input>
-      </div>
+      <!-- <div class="search-box">
+        <input id="search" type="text" placeholder="Search..."></input>
+        <input id="search-button" value="Search" type="button"></input>
+      </div> -->
+    </div>
+
+    <div class="find">
+      <ul id="apts">
+      </ul>
+    </div>
+
+    <div class="create-listing">
+      <h2> Create Listing </h2>
+      <form id="listing">
+        <label> Title
+          <input id="title" type="text">
+        </label>
+        <label> Address
+          <input id="address" type="text">
+        </label>
+        <label> Description
+          <input id="description" type="text">
+        </label>
+        <label> Bedrooms
+          <input id="bedrooms" type="text">
+        </label>
+        <label> Bathrooms
+          <input id="bathrooms" type="text">
+        </label>
+        <label> Price
+          <input id="price" type="text">
+        </label>
+        <label> Photo
+          <input id="image" type="file">
+        </label>
+        <input id="create" type="submit" value="Create">
+      </form>
     </div>
   </div>
 
-  <div class="register-wrapper">
-    <div class="register-box">
-      <h2> Register </h2>
-      <form id="register">
-        <label> Email
-          <input id="email" type="text" placeholder="email">
-        </label>
-        <label> Password
-          <input id="password" type="password" placeholder="password">
-        </label>
-        <label> Confirm Password
-        <input id="password_confirmation" type="password" placeholder="password confirmation">
-        </label>
-        <br><input name="register" type="submit" value="Register" class="submit-button"></br>
-      </form>
-      <div class="complete-registration">
-        <h3> Registration Complete! </h3>
+  <div class="auth-wrapper">
+    <div class="auth-box">
+      <div class="registration">
+        <h2> Register </h2>
+        <form id="register">
+          <label> Email
+            <input id="email" type="text" placeholder="email">
+          </label>
+          <br><label> Password
+            <input id="password" type="password" placeholder="password">
+          </label>
+          <br><label> Confirm Password
+          <input id="password_confirmation" type="password" placeholder="password confirmation">
+          </label>
+          <br><input name="register" type="submit" value="Register" class="submit-button"></br>
+        </form>
+        <div class="complete-registration">
+          <h3> Registration Complete! </h3>
+        </div>
+      </div>
+
+      <div class="login-form">
+        <h2>Login</h2>
+        <form id="login">
+          <label> Email
+            <input id="login-email" type="text" placeholder="email">
+          </label>
+          <br><label> Password
+            <input id="login-password" type="text" placeholder="password">
+          </label>
+          <input name="login" type="submit" value="Login" class="submit-button">
+        </form>
       </div>
       <a href="#" class="close">x</a>
     </div>
