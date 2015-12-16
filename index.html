@@ -12,14 +12,22 @@
   <header>
 
     <div class="icon">
-      <a href="#">HOME</a>
     </div>
 
-    <div class="auth">
+    <div class="login">
+      <form id="login">
+        <label> Email
+          <input id="login-email" type="text" placeholder="email">
+        </label>
+        <label> Password
+          <input id="login-password" type="text" placeholder="password">
+        </label>
+        <input id="login-button" type="submit" value="Login">
+      </form>
+    </div>
+
+    <div class="loggedin-links">
       <ul>
-        <li id="login">
-          <a href="#login">Login</a>
-        </li>
         <li id="profile">
           <a href="#profile">Profile</a>
         </li>
@@ -58,6 +66,17 @@
       </ul>
     </div>
 
+    <div class="profile-page">
+        <div class="profile-name">
+        </div>
+        <div class="row">
+          <div class="profile-picture">
+          </div>
+          <div class="description">
+          </div>
+        </div>
+    </div>
+
     <div class="create-listing">
       <h2> Create Listing </h2>
       <form id="listing">
@@ -84,45 +103,51 @@
         </label>
         <input id="create" type="submit" value="Create">
       </form>
+      <div class="complete-listing">
+        <h3> Successfully Created! </h3>
+      </div>
     </div>
   </div>
 
-  <div class="auth-wrapper">
-    <div class="auth-box">
+  <div class="register-wrapper">
+    <!-- <div class="auth-box"> -->
       <div class="registration">
         <h2> Register </h2>
         <form id="register">
+          <label> First Name
+            <input id="first_name" type="text">
+          </label>
+          <label> Last Name
+            <input id="surname" type="text">
+          </label>
           <label> Email
-            <input id="email" type="text" placeholder="email">
+            <input id="email" type="text">
           </label>
           <br><label> Password
-            <input id="password" type="password" placeholder="password">
+            <input id="password" type="password">
           </label>
           <br><label> Confirm Password
-          <input id="password_confirmation" type="password" placeholder="password confirmation">
+          <input id="password_confirmation" type="password">
           </label>
-          <br><input name="register" type="submit" value="Register" class="submit-button"></br>
+          <br><input id="register-button" type="submit" value="Register"></br>
         </form>
         <div class="complete-registration">
           <h3> Registration Complete! </h3>
         </div>
+        <a href="#" class="close">x</a>
       </div>
-
-      <div class="login-form">
-        <h2>Login</h2>
-        <form id="login">
-          <label> Email
-            <input id="login-email" type="text" placeholder="email">
-          </label>
-          <br><label> Password
-            <input id="login-password" type="text" placeholder="password">
-          </label>
-          <input name="login" type="submit" value="Login" class="submit-button">
-        </form>
-      </div>
-      <a href="#" class="close">x</a>
-    </div>
+    <!-- </div> -->
   </div>
+
+
+  <!-- <script id="show-listings" type="text/x-handlebars-template">
+    {{#each listings}}
+    <li>
+      <img src={{}}>
+      <h2>{{title}}</h2>
+    </li>
+    {{/each}}
+  </script> -->
 
 </body>
 

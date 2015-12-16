@@ -34,21 +34,30 @@ li a:hover {
     background-color: #111;
 }
 
-.auth {
-  display: inline;
+.login {
+  display: inline-block;
+  float: right;
+  padding: 15px;
+  font-size: 12px;
+}
+
+#login-button {
+  float: right;
+  margin: 1px;
+  width: 10%;
+  /*font-size: 75%;*/
+  background: #2EBC99;
+  border: none;
+  color: #fff;
+}
+
+.loggedin-links {
+  display: none;
   float: right;
 }
 
-#profile {
-  display: none;
-}
-
-#logout {
-  display: none;
-}
-
-/*REGISTER*/
-.auth-wrapper {
+/* REGISTER */
+.register-wrapper {
   position: fixed;
   background: rgba(0,0,0,0.75);
   height: 100%;
@@ -58,17 +67,17 @@ li a:hover {
   display: none;
 }
 
-.auth-box {
-  position: absolute;
-  background-color: white;
-  width: 43%;
-  height: 250px;
+.registration {
+  width: 50%;
   top: 150px;
-  left: 325px;
   padding: 40px;
+  font: 95% Arial, Helvetica, sans-serif;
+  margin: 5px auto;
+  padding: 15px;
+  background: #F7F7F7;
 }
 
-.auth-box h2 {
+.registration h2 {
   background: #43D1AF;
   padding: 10px 0;
   font-size: 130%;
@@ -78,45 +87,27 @@ li a:hover {
   margin: -16px -16px 16px -16px;
 }
 
-.auth-box form input {
-  padding: 2px;
-  margin: 10px;
-}
-
-.registration {
-  float: left;
-  width: 43%;
+.registration input {
+  box-sizing: border-box;
+  width: 100%;
+  background: #fff;
+  margin-bottom: 4%;
+  border: 1px solid #ccc;
+  padding: 2%;
   font: 95% Arial, Helvetica, sans-serif;
-  margin: 5px auto;
-  padding: 15px;
-  background: #F7F7F7;
 }
 
-.submit-button {
-  width: 90%;
+#register-button {
+  width: 25%;
   font-size: 100%;
   background: #43D1AF;
   border: none;
   color: #fff;
 }
 
-/*
-.submit-button:hover {
-  background-color: white;
-}*/
-
 .complete-registration {
   text-align: center;
   display: none;
-}
-
-.login-form {
-  float: right;
-  width: 43%;
-  font: 95% Arial, Helvetica, sans-serif;
-  margin: 5px auto;
-  padding: 15px;
-  background: #F7F7F7;
 }
 
 .close {
@@ -146,6 +137,7 @@ li a:hover {
   /*background-color: lightpink;*/
 }
 
+/* HOME PAGE */
 .home {
   position: relative;
   width: 100%;
@@ -153,8 +145,10 @@ li a:hover {
   background-image: url('images/boston.jpg');
   background-size: cover;
   opacity: 0.8;
+  display: none;
 }
 
+/* SEARCH */
 .search-box {
   box-sizing: border-box;
   width: 100%;
@@ -165,8 +159,41 @@ li a:hover {
   font: 95% Arial, Helvetica, sans-serif;
 }
 
+/* PROFILE */
+.profile-name {
+  position: relative;
+  left: 100px;
+  top: 10px;
+  text-align: center;
+  width: 300px;
+  height: 50px;
+  /*background-color: pink;*/
+}
+
+.profile-picture {
+  position: relative;
+  float: left;
+  left: 100px;
+  top: 20px;
+  background-color: #43D1AF;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.description {
+  float: left;
+  position: relative;
+  left: 150px;
+  top: 45px;
+  background-color: #43D1AF;
+  width: 700px;
+  height: 250px;
+}
+
 /* CREATE FORM */
 .create-listing {
+  display: none;
   font: 95% Arial, Helvetica, sans-serif;
   max-width: 600px;
   margin: 5px auto;
@@ -194,12 +221,6 @@ li a:hover {
   font: 95% Arial, Helvetica, sans-serif;
 }
 
-.create-listing input:focus {
-  box-shadow: 0 0 5px #43D1AF;
-  padding: 3%;
-  border: 1px solid #43D1AF;
-}
-
 #create {
   width: 100%;
   padding: 3%;
@@ -213,4 +234,9 @@ li a:hover {
 
 #create:hover {
   background: #2EBC99;
+}
+
+.complete-listing {
+  text-align: center;
+  display: none;
 }
