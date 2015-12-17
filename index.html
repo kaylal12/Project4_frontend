@@ -83,10 +83,19 @@
         </div>
         <div class="row">
           <div class="profile-picture">
-            <i id="edit" class="fa fa-pencil fa-lg"></i>
-            <input id="change-photo" type="file" style="display: none;">
+            <form id="update-photo">
+              <input id="change-photo" type="file">
+              <input type="submit">
+            </form>
           </div>
+          <!-- <h4> About Me </h4> -->
           <div class="description">
+            <a id="edit-description" href="#">Edit</a>
+            <div class="textbox">
+              <form>
+                <input type="hidden" name="hiddenEdit">
+              </form>
+            </div>
           </div>
         </div>
     </div>

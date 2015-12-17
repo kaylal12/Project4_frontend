@@ -1,10 +1,10 @@
 $(document).ready(function(){
   var url = 'http://localhost:3000';
+  var awsurl = 'https://s3.amazonaws.com/wdi-project4/images/medium/';
   var id = '';
   var token = '';
 
   // REGISTER
-  // not working with attached file; works without paperclip in profile
   $("#register").on('submit', function(event) {
     event.preventDefault();
 
@@ -103,9 +103,11 @@ $(document).ready(function(){
 
       var name = data.first_name + ' ' + data.surname;
       var description = data.description;
+      var photo = data.profile_picture_file_name;
 
       $(".profile-name").append("<h2>" + name + "</h2>");
       $(".description").append("<p>" + description + "</p>");
+      $(".profile-picture").css("background-image", "url(" + awsurl + photo + ")");
 
     }).fail(function(){
       console.log("error");
@@ -113,6 +115,33 @@ $(document).ready(function(){
   });
 
   // UPDATE PROFILE PICTURE
+  $("#update-photo").on('submit', function(event){
+    event.preventDefault();
+    var reader = new FileReader();
+
+    reader.onload = function(event){
+      $.ajax({
+        method: 'PATCH',
+        url: url + '/profiles/' + id,
+        data: {
+          profile: {
+            profile_picture: event.target.result
+          }
+        },
+        headers: {
+          Authorization: 'Token token=' + token
+        },
+      }).done(function(data){
+        // returns undefined
+        console.log(data);
+      }).fail(function(){
+        console.log('fail');
+      });
+    };
+
+    $fileInput = $('#change-photo');
+    reader.readAsDataURL($fileInput[0].files[0]);
+  });
 
   // CREATE LISTING
   $("#listing").on('submit', function(event){
@@ -147,7 +176,7 @@ $(document).ready(function(){
       });
     };
 
-    $fileInput = $('#image');
+    $fileInput = $('#change-photo');
     reader.readAsDataURL($fileInput[0].files[0]);
 
   });

@@ -32,9 +32,4 @@ $(document).ready(function() {
     $(".create-listing").slideUp();
   });
 
-   // edit photo functionality
-  $("#edit").click(function(){
-    $("#change-photo").trigger('click');
-  });
-
 });

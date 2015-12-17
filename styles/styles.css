@@ -218,14 +218,15 @@ li a:hover {
   border-radius: 50%;
 }
 
-.profile-picture i {
+#update-photo {
   position: relative;
-  left: 50px;
+  display: block;
+  left: 15px;
   top: 40px;
   opacity: 0.6;
 }
 
-.profile-picture i:hover {
+#update-photo:hover {
   opacity: 1;
 }
 
@@ -237,6 +238,18 @@ li a:hover {
   background-color: #709CC1;
   width: 700px;
   height: 250px;
+}
+
+#edit-description {
+  float: right;
+}
+
+.textbox {
+  position: relative;
+  width: 650px;
+  height: 200px;
+  top: 10%;
+  margin: 0 auto;
 }
 
 /* CREATE FORM */
