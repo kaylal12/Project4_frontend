@@ -13,7 +13,7 @@ $(document).ready(function() {
   // opens profile page, hides other pages
   $("#profile").on('click', function(){
     $(".home").hide();
-    $("#listing-apt").hide();
+    $(".create-listing").slideUp();
     $(".find").hide();
   });
 
@@ -26,10 +26,10 @@ $(document).ready(function() {
   });
 
   // opens listings, hides other pages
-  $(".find").on('click', function(){
+  $("#find-apt").on('click', function(){
     $(".home").hide();
-    $(".profile-page").hide();
-    $("#list-apt").hide();
+    $(".profile-page").slideUp();
+    $(".create-listing").slideUp();
   });
 
    // edit photo functionality

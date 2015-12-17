@@ -288,3 +288,8 @@ li a:hover {
   text-align: center;
   display: none;
 }
+
+/* FINDING LISTINGS */
+.find {
+  display: none;
+}

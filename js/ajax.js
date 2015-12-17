@@ -72,7 +72,7 @@ $(document).ready(function(){
         Authorization: 'Token token=' + token
       }
     }).done(function(){
-      $(".home").show();
+      $(".home").slideDown();
       $(".loggedin-links").hide();
       $("#login").show();
       $("#signup").show();
@@ -94,8 +94,7 @@ $(document).ready(function(){
       }
     }).done(function(data){
       console.log(data);
-      $(".home").hide();
-      $(".profile-page").show();
+      $(".profile-page").slideDown();
 
       var name = data.first_name + ' ' + data.surname;
       var description = data.description;
@@ -135,6 +134,7 @@ $(document).ready(function(){
       }
       }).done(function(){
         console.log("success");
+
         $("#listing").fadeOut();
         $(".complete-listing").fadeIn();
       }).fail(function(){
@@ -160,11 +160,11 @@ $(document).ready(function(){
       dataType: 'json'
     }).done(function(data){
       console.log(data);
-      $(".home").hide();
+      $(".find").slideDown();
 
-      // var templateTarget = $('#show-listings').html();
-      // var template = Handlebars.compile(templateTarget);
-      var content = showListingsTemplate(data);
+      var templateTarget = $('#show-listings').html();
+      var template = Handlebars.compile(templateTarget);
+      var content = template(data);
       $('#apts').html(content);
 
       // var newHTML = data.map(showListingsTemplate).reduce(function(a,b){return a + b;});
