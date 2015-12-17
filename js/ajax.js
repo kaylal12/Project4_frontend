@@ -90,6 +90,15 @@ $(document).ready(function(){
       }
     }).done(function(data){
       console.log(data);
+      $(".home").hide();
+      $(".profile-page").show();
+
+      var name = data.first_name + ' ' + data.surname;
+      var description = data.description;
+
+      $(".profile-name").append("<h2>" + name + "</h2>");
+      $(".description").append("<p>" + description + "</p>");
+
     }).fail(function(){
       console.log("error");
     });
@@ -151,10 +160,10 @@ $(document).ready(function(){
       console.log(data);
       $(".home").hide();
 
-      var templateTarget = $('#show-listings').html();
-       var template = Handlebars.compile(templateTarget);
-       var content = template(data);
-       $('#apts').html(content);
+      // var templateTarget = $('#show-listings').html();
+      // var template = Handlebars.compile(templateTarget);
+      var content = showListingsTemplate(data);
+      $('#apts').html(content);
 
       // var newHTML = data.map(showListingsTemplate).reduce(function(a,b){return a + b;});
 
