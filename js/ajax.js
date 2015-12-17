@@ -124,6 +124,7 @@ $(document).ready(function(){
       }
       }).done(function(){
         console.log("success");
+        $("#listing").fadeOut();
         $(".complete-listing").fadeIn();
       }).fail(function(){
         console.log("error");
