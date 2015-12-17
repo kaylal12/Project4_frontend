@@ -73,4 +73,39 @@ $(document).ready(function(){
     });
   });
 
+  $("#listing").on('submit', function(event){
+    event.preventDefault();
+    var reader = new FileReader();
+
+    reader.onload = function(event){
+      $.ajax({
+      method: 'POST',
+      url: url + '/listings',
+      data: {
+        listings: {
+          title: $("#title").val(),
+          addresss: $("#address").val(),
+          description: $("#description").val(),
+          bedrooms: $("#bedrooms").val(),
+          bathrooms: $("#bathrooms").val(),
+          price: $("#price").val(),
+          image: event.target.results
+        }
+      },
+      headers: {
+        Authorization: 'Token token=' + token
+      }
+      }).done(function(){
+        console.log("success");
+        $(".complete-listing").fadeIn();
+      }).fail(function(){
+        console.log("error");
+      });
+    };
+
+    $fileInput = $('#image');
+    reader.readAsDataURL($fileInput[0].files[0]);
+
+  });
+
 });
