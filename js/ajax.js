@@ -136,6 +136,9 @@ $(document).ready(function(){
 
   });
 
+  // LISTINGS INDEX TEMPLATE
+  var showListingsTemplate = Handlebars.compile($("#show-listings").html());
+
   // GET ALL APTS
   $("#find-apt").on('click', function(event){
     event.preventDefault();
@@ -146,6 +149,11 @@ $(document).ready(function(){
       dataType: 'json'
     }).done(function(data){
       console.log(data);
+      $(".home").hide();
+
+      var newHTML = data.map(showListingsTemplate).reduce(function(a,b){return a + b;});
+
+      $("#apts").html(newHTML);
     }).fail(function(){
       console.log("error");
     });
