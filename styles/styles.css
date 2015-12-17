@@ -222,10 +222,11 @@ li a:hover {
   position: relative;
   left: 50px;
   top: 40px;
+  opacity: 0.6;
 }
 
 .profile-picture i:hover {
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .description {

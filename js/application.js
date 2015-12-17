@@ -15,4 +15,8 @@ $(document).ready(function() {
     $(".create-listing").slideDown();
   });
 
+  $("#edit").click(function(){
+    $("#change-photo").trigger('click');
+  });
+
 });
