@@ -230,7 +230,7 @@ li a:hover {
 
 /* CREATE FORM */
 .create-listing {
-  /*display: none;*/
+  display: none;
   font: 95% Arial, Helvetica, sans-serif;
   max-width: 600px;
   margin: 5px auto;
