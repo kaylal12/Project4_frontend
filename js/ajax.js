@@ -52,6 +52,10 @@ $(document).ready(function(){
       $("#login").hide();
       $("#signup").hide();
       $(".loggedin-links").show();
+
+      $('#login').each(function(){
+            this.reset();
+          });
     }).fail(function(){
       console.log("error");
     });
@@ -95,9 +99,7 @@ $(document).ready(function(){
     });
   });
 
-  // UPDATE PROFILE
-
-  // DELETE PROFILE
+  // UPDATE PROFILE PICTURE
 
   // CREATE LISTING
   $("#listing").on('submit', function(event){
