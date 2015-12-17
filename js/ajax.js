@@ -84,12 +84,12 @@ $(document).ready(function(){
       data: {
         listings: {
           title: $("#title").val(),
-          addresss: $("#address").val(),
+          address: $("#address").val(),
           description: $("#description").val(),
           bedrooms: $("#bedrooms").val(),
           bathrooms: $("#bathrooms").val(),
           price: $("#price").val(),
-          image: event.target.results
+          image: event.target.result
         }
       },
       headers: {
