@@ -151,13 +151,38 @@
     </div>
   </div>
 
+  <!-- <table>
+    //   <thead>
+    //     <th></th>
+    //     <th>Title</th>
+    //     <th>Address</th>
+    //   </thead>
+
+    //   <tbody>
+    //     {{#each listings}}
+    //       <tr>
+    //         <td><img src="https://s3.amazonaws.com/wdi-project4/images/medium/{{image_file_name}}"></td>
+    //         <td>{{title}}</td>
+    //         <td>{{address}}</td>
+    //       </tr>
+    //     {{/each}}
+    //   </tbody>
+    // </table> -->
+
   <!-- HANDLEBARS TEMPLATE -->
   <script id="show-listings" type="text/x-handlebars-template">
     {{#each listings}}
-    <li>
-      <h2>{{title}}</h2>
-    </li>
+      <ul>
+        <li>
+          <h2>{{title}}</h2>
+          <img src="https://s3.amazonaws.com/wdi-project4/images/medium/{{image_file_name}}">
+          <p>{{address}}</p>
+          <p>{{description}}</p>
+          <p>Bedrooms: {{bedrooms}}, Bathrooms: {{bathrooms}}, Price: ${{price}}</p>
+        </li>
+      </ul>
     {{/each}}
+    <ul>
   </script>
 
   <!-- SCRIPTS -->

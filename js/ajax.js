@@ -151,9 +151,14 @@ $(document).ready(function(){
       console.log(data);
       $(".home").hide();
 
-      var newHTML = data.map(showListingsTemplate).reduce(function(a,b){return a + b;});
+      var templateTarget = $('#show-listings').html();
+       var template = Handlebars.compile(templateTarget);
+       var content = template(data);
+       $('#apts').html(content);
 
-      $("#apts").html(newHTML);
+      // var newHTML = data.map(showListingsTemplate).reduce(function(a,b){return a + b;});
+
+      // $("#apts").html(newHTML);
     }).fail(function(){
       console.log("error");
     });
