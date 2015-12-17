@@ -194,7 +194,7 @@ li a:hover {
 
 /* PROFILE */
 .profile-page {
-  display: none;
+  /*display: none;*/
 }
 
 .profile-name {
@@ -216,6 +216,16 @@ li a:hover {
   width: 300px;
   height: 300px;
   border-radius: 50%;
+}
+
+.profile-picture i {
+  position: relative;
+  left: 50px;
+  top: 40px;
+}
+
+.profile-picture i:hover {
+  opacity: 0.6;
 }
 
 .description {
