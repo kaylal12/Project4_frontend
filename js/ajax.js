@@ -94,6 +94,15 @@ $(document).ready(function(){
       }
     }).done(function(data){
       console.log(data);
+      $(".home").hide();
+      $(".profile-page").show();
+
+      var name = data.first_name + ' ' + data.surname;
+      var description = data.description;
+
+      $(".profile-name").append("<h2>" + name + "</h2>");
+      $(".description").append("<p>" + description + "</p>");
+
     }).fail(function(){
       console.log("error");
     });
@@ -138,6 +147,9 @@ $(document).ready(function(){
 
   });
 
+  // LISTINGS INDEX TEMPLATE
+  var showListingsTemplate = Handlebars.compile($("#show-listings").html());
+
   // GET ALL APTS
   $("#find-apt").on('click', function(event){
     event.preventDefault();
@@ -148,6 +160,16 @@ $(document).ready(function(){
       dataType: 'json'
     }).done(function(data){
       console.log(data);
+      $(".home").hide();
+
+      // var templateTarget = $('#show-listings').html();
+      // var template = Handlebars.compile(templateTarget);
+      var content = showListingsTemplate(data);
+      $('#apts').html(content);
+
+      // var newHTML = data.map(showListingsTemplate).reduce(function(a,b){return a + b;});
+
+      // $("#apts").html(newHTML);
     }).fail(function(){
       console.log("error");
     });
