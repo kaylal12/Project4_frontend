@@ -78,6 +78,22 @@ $(document).ready(function(){
   });
 
   // SHOW PROFILE
+  $("#profile").on('click', function(event){
+    event.preventDefault();
+
+    $.ajax({
+      method: 'GET',
+      url: url + '/profiles/' + id,
+      dataType: 'json',
+      headers: {
+        Authorization: 'Token token=' + token
+      }
+    }).done(function(data){
+      console.log(data);
+    }).fail(function(){
+      console.log("error");
+    });
+  });
 
   // UPDATE PROFILE
 
