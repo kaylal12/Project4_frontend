@@ -1,7 +1,7 @@
 /* HEADER NAV */
 header {
   width: 100%;
-  background-color: #43D1AF;
+  background-color: #709CC1;
 }
 
 .icon {
@@ -11,10 +11,10 @@ header {
 }
 
 .nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 li {
@@ -23,15 +23,15 @@ li {
 }
 
 li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 li a:hover {
-    background-color: #111;
+  background-color: #111;
 }
 
 .login {
@@ -46,9 +46,13 @@ li a:hover {
   margin: 1px;
   width: 10%;
   /*font-size: 75%;*/
-  background: #2EBC99;
+  background: #4C6C9D;
   border: none;
   color: #fff;
+}
+
+#login-button:hover {
+  background: #99CED4;
 }
 
 .loggedin-links {
@@ -68,8 +72,9 @@ li a:hover {
 }
 
 .registration {
+  position: relative;
   width: 50%;
-  top: 150px;
+  top: 10%;
   padding: 40px;
   font: 95% Arial, Helvetica, sans-serif;
   margin: 5px auto;
@@ -78,7 +83,7 @@ li a:hover {
 }
 
 .registration h2 {
-  background: #43D1AF;
+  background: #709CC1;
   padding: 10px 0;
   font-size: 130%;
   font-weight: 250;
@@ -100,7 +105,7 @@ li a:hover {
 #register-button {
   width: 25%;
   font-size: 100%;
-  background: #43D1AF;
+  background: #709CC1;
   border: none;
   color: #fff;
 }
@@ -145,7 +150,35 @@ li a:hover {
   background-image: url('images/boston.jpg');
   background-size: cover;
   opacity: 0.8;
-  display: none;
+}
+
+/* ABOUT */
+.about {
+  position: relative;
+  width: 45%;
+  height: 50%;
+  top: 25%;
+  margin: 0 auto;
+  background-color: rgba(0,0,0,0.75);;
+  /*opacity: 0.6;*/
+}
+
+/* SIGN UP BUTTON */
+#signup {
+  position: relative;
+  width: 35%;
+  border-radius: 3%;
+  padding: 3%;
+  font-size: 100%;
+  top: 75%;
+  left: 33%;
+  background: #709CC1;
+  border: none;
+  color: #fff;
+}
+
+#signup:hover {
+  background: #99CED4;
 }
 
 /* SEARCH */
@@ -160,6 +193,10 @@ li a:hover {
 }
 
 /* PROFILE */
+.profile-page {
+  display: none;
+}
+
 .profile-name {
   position: relative;
   left: 100px;
@@ -175,7 +212,7 @@ li a:hover {
   float: left;
   left: 100px;
   top: 20px;
-  background-color: #43D1AF;
+  background-color: #709CC1;
   width: 300px;
   height: 300px;
   border-radius: 50%;
@@ -186,14 +223,14 @@ li a:hover {
   position: relative;
   left: 150px;
   top: 45px;
-  background-color: #43D1AF;
+  background-color: #709CC1;
   width: 700px;
   height: 250px;
 }
 
 /* CREATE FORM */
 .create-listing {
-  display: none;
+  /*display: none;*/
   font: 95% Arial, Helvetica, sans-serif;
   max-width: 600px;
   margin: 5px auto;
@@ -202,7 +239,7 @@ li a:hover {
 }
 
 .create-listing h2 {
-  background: #43D1AF;
+  background: #709CC1;
   padding: 20px 0;
   font-size: 140%;
   font-weight: 300;
@@ -224,8 +261,8 @@ li a:hover {
 #create {
   width: 100%;
   padding: 3%;
-  background: #43D1AF;
-  border-bottom: 2px solid #30C29E;
+  background: #709CC1;
+  border-bottom: 2px solid #4C6C9D;
   border-top-style: none;
   border-right-style: none;
   border-left-style: none;
@@ -233,7 +270,7 @@ li a:hover {
 }
 
 #create:hover {
-  background: #2EBC99;
+  background: #99CED4;
 }
 
 .complete-listing {
