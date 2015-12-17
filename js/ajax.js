@@ -3,6 +3,8 @@ $(document).ready(function(){
   var id = '';
   var token = '';
 
+  // REGISTER
+  // not working with attached file; works without paperclip in profile
   $("#register").on('submit', function(event) {
     event.preventDefault();
 
@@ -30,6 +32,7 @@ $(document).ready(function(){
     });
   });
 
+  // LOGIN
   $("#login").on('submit', function(event) {
     event.preventDefault();
 
@@ -54,6 +57,7 @@ $(document).ready(function(){
     });
   });
 
+  // LOGOUT
   $("#logout").on('click', function(event) {
     event.preventDefault();
 
@@ -73,6 +77,13 @@ $(document).ready(function(){
     });
   });
 
+  // SHOW PROFILE
+
+  // UPDATE PROFILE
+
+  // DELETE PROFILE
+
+  // CREATE LISTING
   $("#listing").on('submit', function(event){
     event.preventDefault();
     var reader = new FileReader();
@@ -107,5 +118,24 @@ $(document).ready(function(){
     reader.readAsDataURL($fileInput[0].files[0]);
 
   });
+
+  // GET ALL APTS
+  $("#find-apt").on('click', function(event){
+    event.preventDefault();
+
+    $.ajax({
+      method: 'GET',
+      url: url + '/listings',
+      dataType: 'json'
+    }).done(function(data){
+      console.log(data);
+    }).fail(function(){
+      console.log("error");
+    });
+  });
+
+  // UPDATE LISTING
+
+  // DELETE LISTING
 
 });
