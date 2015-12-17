@@ -76,6 +76,9 @@ $(document).ready(function(){
       $(".loggedin-links").hide();
       $("#login").show();
       $("#signup").show();
+      $(".profile-page").slideUp();
+      $(".find").slideUp();
+      $(".create-listing").slideUp();
     }).fail(function(){
       console.log("error");
     });
@@ -95,6 +98,8 @@ $(document).ready(function(){
     }).done(function(data){
       console.log(data);
       $(".profile-page").slideDown();
+      $(".profile-name").html('');
+      $(".description").html('');
 
       var name = data.first_name + ' ' + data.surname;
       var description = data.description;
@@ -162,14 +167,8 @@ $(document).ready(function(){
       console.log(data);
       $(".find").slideDown();
 
-      var templateTarget = $('#show-listings').html();
-      var template = Handlebars.compile(templateTarget);
-      var content = template(data);
+      var content = showListingsTemplate(data);
       $('#apts').html(content);
-
-      // var newHTML = data.map(showListingsTemplate).reduce(function(a,b){return a + b;});
-
-      // $("#apts").html(newHTML);
     }).fail(function(){
       console.log("error");
     });
