@@ -73,7 +73,7 @@ li a:hover {
 
 .registration {
   position: relative;
-  width: 50%;
+  width: 35%;
   top: 10%;
   padding: 40px;
   font: 95% Arial, Helvetica, sans-serif;
@@ -200,7 +200,7 @@ li a:hover {
 .profile-name {
   position: relative;
   left: 100px;
-  top: 10px;
+  top: 25px;
   text-align: center;
   width: 300px;
   height: 50px;
@@ -221,8 +221,8 @@ li a:hover {
 #update-photo {
   position: relative;
   display: block;
-  left: 15px;
-  top: 40px;
+  left: 20px;
+  top: 300px;
   opacity: 0.6;
 }
 
@@ -238,10 +238,6 @@ li a:hover {
   background-color: #709CC1;
   width: 700px;
   height: 250px;
-}
-
-#edit-description {
-  float: right;
 }
 
 .textbox {
@@ -306,3 +302,4 @@ li a:hover {
 .find {
   display: none;
 }
+

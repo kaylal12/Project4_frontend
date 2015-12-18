@@ -88,6 +88,9 @@ $(document).ready(function(){
   $("#profile").on('click', function(event){
     event.preventDefault();
 
+    // LISTINGS INDEX TEMPLATE
+    var showProfileTemplate = Handlebars.compile($("#show-profile").html());
+
     $.ajax({
       method: 'GET',
       url: url + '/profiles/' + id,
@@ -98,17 +101,28 @@ $(document).ready(function(){
     }).done(function(data){
       console.log(data);
       $(".profile-page").slideDown();
-      $(".profile-name").html('');
-      $(".description").html('');
+      // $(".profile-name").html('');
+      // $(".textbox").html('');
+      // $(".user-listings").html('');
 
-      var name = data.first_name + ' ' + data.surname;
-      var description = data.description;
-      var photo = data.profile_picture_file_name;
+      // var name = data.profile.first_name + ' ' + data.profile.surname;
+      // var description = data.profile.description;
+      // var photo = data.profile.profile_picture_file_name;
 
-      $(".profile-name").append("<h2>" + name + "</h2>");
-      $(".description").append("<p>" + description + "</p>");
-      $(".profile-picture").css("background-image", "url(" + awsurl + photo + ")");
+      // $(".profile-name").append("<h2>" + name + "</h2>");
+      // $(".textbox").append("<p>" + description + "</p>");
+      // $(".profile-picture").css("background-image", "url(" + awsurl + photo + ")");
 
+
+      // var listings = data.profile.listings;
+
+      // for (var i = 0; i < listings.length; i++) {
+      //   console.log(listings[i]);
+      //   $(".user-listings").append("<li class='edit'><h2>" + listings[i].title + "</h2>" + "<img src=" + awsurl + listings[i].image_file_name + ">" + "<p>" + listings[i].address + "</p>" + "<p>" + listings[i].description + "</p>" + "<p> Bedrooms: " + listings[i].bedrooms + ", Bathrooms:" + listings[i].bathrooms + "</p>" + "<p>" + listings[i].price + "</p>" + "<button type='button' id=" + listings[i].id + "class='delete'>Delete</button>" +  "</li>");
+      // }
+
+      var content = showProfileTemplate(data);
+      $('.profile-page').html(content);
     }).fail(function(){
       console.log("error");
     });
@@ -176,17 +190,17 @@ $(document).ready(function(){
       });
     };
 
-    $fileInput = $('#change-photo');
+    $fileInput = $('#image');
     reader.readAsDataURL($fileInput[0].files[0]);
 
   });
 
-  // LISTINGS INDEX TEMPLATE
-  var showListingsTemplate = Handlebars.compile($("#show-listings").html());
-
   // GET ALL APTS
   $("#find-apt").on('click', function(event){
     event.preventDefault();
+
+    // LISTINGS INDEX TEMPLATE
+    var showListingsTemplate = Handlebars.compile($("#show-listings").html());
 
     $.ajax({
       method: 'GET',
@@ -205,6 +219,26 @@ $(document).ready(function(){
 
   // UPDATE LISTING
 
+
   // DELETE LISTING
+  $('.profile-page').on("click", "button[data-type=delete]", function(event) {
+        event.preventDefault();
+        var listingId = $(this).data("id");
+
+        $.ajax({
+          method: 'DELETE',
+          url: url + '/listings/' + listingId,
+          headers: {
+            Authorization: 'Token token=' + token
+          },
+          contentType: 'application/json',
+          dataType: 'json'
+        }).done(function(){
+          $(event.target).parent().parent().children().children(".list-name").hide();
+          $(event.target).parent().parent()
+        }).fail(function(){
+          console.log("error");
+        });
+      });
 
 });

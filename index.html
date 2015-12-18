@@ -43,9 +43,6 @@
     <!-- NAV -->
     <div class="nav">
       <ul>
-        <!-- <li>
-          <a href="#">About</a>
-        </li> -->
         <li id="find-apt">
           <a href="#find">Find an apt</a>
         </li>
@@ -79,25 +76,30 @@
 
     <!-- USER PROFILE -->
     <div class="profile-page">
-        <div class="profile-name">
+      <!-- <div class="profile-name">
+      </div>
+      <div class="row">
+        <div class="profile-picture">
+          <form id="update-photo">
+            <input id="change-photo" type="file">
+            <input type="submit">
+          </form>
         </div>
-        <div class="row">
-          <div class="profile-picture">
-            <form id="update-photo">
-              <input id="change-photo" type="file">
-              <input type="submit">
+        <div class="description">
+          <a id="edit-description" href="#">Edit</a>
+          <div class="textbox">
+            <p class="edit-desc"> Enter description... </p>
+            <form>
+              <input type="hidden" name="hiddenEdit">
             </form>
           </div>
-          <!-- <h4> About Me </h4> -->
-          <div class="description">
-            <a id="edit-description" href="#">Edit</a>
-            <div class="textbox">
-              <form>
-                <input type="hidden" name="hiddenEdit">
-              </form>
-            </div>
-          </div>
         </div>
+      </div>
+
+      <div class="row">
+        <ul class="user-listings">
+        </ul>
+      </div> -->
     </div>
 
     <!-- CREATE FORM -->
@@ -163,34 +165,108 @@
     </div>
   </div>
 
-  <!-- <table>
-    //   <thead>
-    //     <th></th>
-    //     <th>Title</th>
-    //     <th>Address</th>
-    //   </thead>
-
-    //   <tbody>
-    //     {{#each listings}}
-    //       <tr>
-    //         <td><img src="https://s3.amazonaws.com/wdi-project4/images/medium/{{image_file_name}}"></td>
-    //         <td>{{title}}</td>
-    //         <td>{{address}}</td>
-    //       </tr>
-    //     {{/each}}
-    //   </tbody>
-    // </table> -->
-
   <!-- HANDLEBARS TEMPLATE -->
-  <script id="show-listings" type="text/x-handlebars-template">
-    {{#each listings}}
+
+  <!-- <div class="profile-name">
+      <h2>{{profile.first_name}} {{profile.surname}}</h2>
+    </div>
+    <div class="row">
+      <img class="profile-picture" src="https://s3.amazonaws.com/wdi-project4/images/thumb/{{profile.profile_picture_file_name}}">
+      <div class="description">
+        <div class="textbox">
+          <p> {{profile.description}} </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      {{#each profile.listings}}
       <ul>
-        <li>
+        <li class="user-listings">
           <h2>{{title}}</h2>
           <img src="https://s3.amazonaws.com/wdi-project4/images/medium/{{image_file_name}}">
           <p>{{address}}</p>
           <p>{{description}}</p>
-          <p>Bedrooms: {{bedrooms}}, Bathrooms: {{bathrooms}}, Price: ${{price}}</p>
+          <p>Bedrooms: {{bedrooms}}, Bathrooms: {{bathrooms}}</p>
+          <p>Price: ${{price}}</p>
+        </li>
+      </ul>
+      {{/each}}
+    </div> -->
+
+  <!-- SHOW PROFILE; CANNOT ADD FORM -->
+  <script id="show-profile" type="text/x-handlebars-template">
+    <div class="profile-name">
+      <h2>{{profile.first_name}} {{profile.surname}}</h2>
+    </div>
+    <div class="row">
+      <span class="list-name"><img class="profile-picture" src="https://s3.amazonaws.com/wdi-project4/images/thumb/{{profile.profile_picture_file_name}}"></span>
+      <input class="list-input" type="file" data-id={{id}} data-field="profile-picture">
+      <input class="list-input" type="submit" data-id={{id}}
+      <div class="description">
+        <div class="textbox">
+          <p> {{profile.description}} </p>
+        </div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <th></th>
+        <th>Title</th>
+        <th>Address</th>
+        <th>Bedrooms</th>
+        <th>Bathrooms</th>
+        <th>Price</th>
+        <th></th>
+        <th></th>
+      </thead>
+
+      <tbody>
+        {{#each profile.listings}}
+          <tr>
+            <td>
+              <span class="list-name"><img src="https://s3.amazonaws.com/wdi-project4/images/medium/{{image_file_name}}"></span>
+            </td>
+            <td>
+              <span class="list-name">{{title}}</span>
+              <input class="list-input" type="text" value="{{title}}" data-id="{{id}}" data-field="title">
+            </td>
+            <td>
+              <span class="list-name">{{address}}</span>
+              <input class="list-input" type="text" value="{{address}}" data-id="{{id}}" data-field="address">
+            </td>
+            <td>
+              <span class="list-name">{{bedrooms}}</span>
+              <input class="list-input" type="text" value="{{bedrooms}}" data-id="{{id}}" data-field="bedrooms" />
+            </td>
+            <td>
+              <span class="list-name">{{bathrooms}}</span>
+              <input class="list-input" type="text" value="{{bathrooms}}" data-id="{{id}}" data-field="bathrooms" />
+            </td>
+            <td>
+              <span class="list-name">{{price}}</span>
+              <input class="list-input" type="text" value="{{price}}" data-id="{{id}}" data-field="price" />
+            </td>
+            <td><button class="list-name" data-type="edit" data-id={{id}}>Edit</button></td>
+            <td><button class="list-name" data-type="delete" data-id={{id}}>Delete</button></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </script>
+
+  <!-- SHOW LISTINGS -->
+  <script id="show-listings" type="text/x-handlebars-template">
+    {{#each listings}}
+      <ul>
+        <li class="listings">
+          <h2>{{title}}</h2>
+          <img src="https://s3.amazonaws.com/wdi-project4/images/medium/{{image_file_name}}">
+          <p>{{address}}</p>
+          <p>{{description}}</p>
+          <p>Bedrooms: {{bedrooms}}, Bathrooms: {{bathrooms}}</p>
+          <p>Price: ${{price}}</p>
         </li>
       </ul>
     {{/each}}
@@ -199,10 +275,9 @@
 
   <!-- SCRIPTS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script type="text/javascript" src="../js/assets/handlebars-v3.0.3.js"></script>
+  <script type="text/javascript" src="js/assets/handlebars-v3.0.3.js"></script>
   <script src="js/application.js" type="text/javascript"></script>
   <script src="js/ajax.js" type="text/javascript"></script>
-  <!-- <script src="js/listings.js" type="text/javascript"></script> -->
 
 </body>
 
