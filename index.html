@@ -43,6 +43,9 @@
     <!-- NAV -->
     <div class="nav">
       <ul>
+        <li id="homepage">
+          <a href="#">Keysub</a>
+        </li>
         <li id="find-apt">
           <a href="#find">Find an apt</a>
         </li>
@@ -60,6 +63,8 @@
     <!-- HOME PAGE -->
     <div class="home">
       <div class="about">
+        <h1>-insert title-</h1>
+        <p> -insert description- </p>
         <button id="signup">Sign Up</button>
       </div>
       <!-- <div class="search-box">
@@ -76,30 +81,6 @@
 
     <!-- USER PROFILE -->
     <div class="profile-page">
-      <!-- <div class="profile-name">
-      </div>
-      <div class="row">
-        <div class="profile-picture">
-          <form id="update-photo">
-            <input id="change-photo" type="file">
-            <input type="submit">
-          </form>
-        </div>
-        <div class="description">
-          <a id="edit-description" href="#">Edit</a>
-          <div class="textbox">
-            <p class="edit-desc"> Enter description... </p>
-            <form>
-              <input type="hidden" name="hiddenEdit">
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <ul class="user-listings">
-        </ul>
-      </div> -->
     </div>
 
     <!-- CREATE FORM -->
@@ -167,89 +148,66 @@
 
   <!-- HANDLEBARS TEMPLATE -->
 
-  <!-- <div class="profile-name">
-      <h2>{{profile.first_name}} {{profile.surname}}</h2>
-    </div>
-    <div class="row">
-      <img class="profile-picture" src="https://s3.amazonaws.com/wdi-project4/images/thumb/{{profile.profile_picture_file_name}}">
-      <div class="description">
-        <div class="textbox">
-          <p> {{profile.description}} </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      {{#each profile.listings}}
-      <ul>
-        <li class="user-listings">
-          <h2>{{title}}</h2>
-          <img src="https://s3.amazonaws.com/wdi-project4/images/medium/{{image_file_name}}">
-          <p>{{address}}</p>
-          <p>{{description}}</p>
-          <p>Bedrooms: {{bedrooms}}, Bathrooms: {{bathrooms}}</p>
-          <p>Price: ${{price}}</p>
-        </li>
-      </ul>
-      {{/each}}
-    </div> -->
-
-  <!-- SHOW PROFILE; CANNOT ADD FORM -->
+  <!-- SHOW PROFILE -->
   <script id="show-profile" type="text/x-handlebars-template">
+
     <div class="profile-name">
       <h2>{{profile.first_name}} {{profile.surname}}</h2>
     </div>
+
     <div class="row">
-      <span class="list-name"><img class="profile-picture" src="https://s3.amazonaws.com/wdi-project4/images/thumb/{{profile.profile_picture_file_name}}"></span>
-      <input class="list-input" type="file" data-id={{id}} data-field="profile-picture">
-      <input class="list-input" type="submit" data-id={{id}}
+      <span class="profile"><img class="profile-picture" src="https://s3.amazonaws.com/wdi-project4/images/thumb/{{profile.profile_picture_file_name}}"></span>
+      <input class="update-photo" id="new-photo" type="file" data-id={{id}} data-field="profile-picture">
+      <button class="update-photo" type="submit" data-type="update-photo" data-id={{id}}>Submit</button>
       <div class="description">
+        <button class="profile" data-type="edit-profile" data-id={{id}}>Edit</button>
         <div class="textbox">
-          <p> {{profile.description}} </p>
+          <span class="profile">
+            {{#if profile.description}}
+              {{profile.description}}
+            {{else}}
+              <p> Enter description...</p>
+            {{/if}}
+          </span>
+          <input class="profile-input" type="text" value="{{profile.description}}" data-id={{id}} data-field="description">
+          <button class="profile-input" data-type="save-desc" data-id={{id}}>Save</button>
         </div>
       </div>
     </div>
 
     <table>
       <thead>
-        <th></th>
-        <th>Title</th>
-        <th>Address</th>
-        <th>Bedrooms</th>
-        <th>Bathrooms</th>
-        <th>Price</th>
-        <th></th>
-        <th></th>
+        <th><h1>LISTINGS</h1></th>
       </thead>
 
       <tbody>
         {{#each profile.listings}}
           <tr>
             <td>
-              <span class="list-name"><img src="https://s3.amazonaws.com/wdi-project4/images/medium/{{image_file_name}}"></span>
+              <img class="img" src="https://s3.amazonaws.com/wdi-project4/images/medium/{{image_file_name}}">
+              <br>
+              <span class="list-name"><h2>Title: {{title}}</h2></span>
+              <input class="list-input" type="text" value="{{title}}" data-id={{id}} data-field="title">
+              <br>
+              <span class="list-name">Address: {{address}}</span>
+              <input class="list-input" type="text" value="{{address}}" data-id={{id}} data-field="address">
+              <br>
+              <span class="list-name">Description: {{description}}</span>
+              <input class="list-input" type="text" value="{{description}}" data-id={{id}} data-field="description">
+              <br>
+              <span class="list-name">Bedrooms: {{bedrooms}}, </span>
+              <input class="list-input" type="text" value="{{bedrooms}}" data-id={{id}} data-field="bedrooms" />
+
+              <span class="list-name">Bathrooms:{{bathrooms}}, </span>
+              <input class="list-input" type="text" value="{{bathrooms}}" data-id={{id}} data-field="bathrooms" />
+
+              <span class="list-name">Price: ${{price}}</span>
+              <input class="list-input" type="text" value="{{price}}" data-id={{id}} data-field="price" />
+
+              <button class="list-input" type="button" data-type="save" data-id={{id}}>Save</button>
+              <button class="list-name" data-type="edit" data-id={{id}}>Edit</button>
+              <button class="list-name" data-type="delete" data-id={{id}}>Delete</button>
             </td>
-            <td>
-              <span class="list-name">{{title}}</span>
-              <input class="list-input" type="text" value="{{title}}" data-id="{{id}}" data-field="title">
-            </td>
-            <td>
-              <span class="list-name">{{address}}</span>
-              <input class="list-input" type="text" value="{{address}}" data-id="{{id}}" data-field="address">
-            </td>
-            <td>
-              <span class="list-name">{{bedrooms}}</span>
-              <input class="list-input" type="text" value="{{bedrooms}}" data-id="{{id}}" data-field="bedrooms" />
-            </td>
-            <td>
-              <span class="list-name">{{bathrooms}}</span>
-              <input class="list-input" type="text" value="{{bathrooms}}" data-id="{{id}}" data-field="bathrooms" />
-            </td>
-            <td>
-              <span class="list-name">{{price}}</span>
-              <input class="list-input" type="text" value="{{price}}" data-id="{{id}}" data-field="price" />
-            </td>
-            <td><button class="list-name" data-type="edit" data-id={{id}}>Edit</button></td>
-            <td><button class="list-name" data-type="delete" data-id={{id}}>Delete</button></td>
           </tr>
         {{/each}}
       </tbody>
@@ -264,7 +222,7 @@
           <h2>{{title}}</h2>
           <img src="https://s3.amazonaws.com/wdi-project4/images/medium/{{image_file_name}}">
           <p>{{address}}</p>
-          <p>{{description}}</p>
+          <p>Description: {{description}}</p>
           <p>Bedrooms: {{bedrooms}}, Bathrooms: {{bathrooms}}</p>
           <p>Price: ${{price}}</p>
         </li>

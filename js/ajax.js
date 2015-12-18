@@ -101,25 +101,6 @@ $(document).ready(function(){
     }).done(function(data){
       console.log(data);
       $(".profile-page").slideDown();
-      // $(".profile-name").html('');
-      // $(".textbox").html('');
-      // $(".user-listings").html('');
-
-      // var name = data.profile.first_name + ' ' + data.profile.surname;
-      // var description = data.profile.description;
-      // var photo = data.profile.profile_picture_file_name;
-
-      // $(".profile-name").append("<h2>" + name + "</h2>");
-      // $(".textbox").append("<p>" + description + "</p>");
-      // $(".profile-picture").css("background-image", "url(" + awsurl + photo + ")");
-
-
-      // var listings = data.profile.listings;
-
-      // for (var i = 0; i < listings.length; i++) {
-      //   console.log(listings[i]);
-      //   $(".user-listings").append("<li class='edit'><h2>" + listings[i].title + "</h2>" + "<img src=" + awsurl + listings[i].image_file_name + ">" + "<p>" + listings[i].address + "</p>" + "<p>" + listings[i].description + "</p>" + "<p> Bedrooms: " + listings[i].bedrooms + ", Bathrooms:" + listings[i].bathrooms + "</p>" + "<p>" + listings[i].price + "</p>" + "<button type='button' id=" + listings[i].id + "class='delete'>Delete</button>" +  "</li>");
-      // }
 
       var content = showProfileTemplate(data);
       $('.profile-page').html(content);
@@ -129,7 +110,7 @@ $(document).ready(function(){
   });
 
   // UPDATE PROFILE PICTURE
-  $("#update-photo").on('submit', function(event){
+  $(".profile-page").on('click', 'button[data-type=update-photo]', function(event){
     event.preventDefault();
     var reader = new FileReader();
 
@@ -153,8 +134,36 @@ $(document).ready(function(){
       });
     };
 
-    $fileInput = $('#change-photo');
+    $fileInput = $('#new-photo');
     reader.readAsDataURL($fileInput[0].files[0]);
+  });
+
+  // UPDATE PROFILE DESCRIPTION
+  $('.profile-page').on('click', 'button[data-type=save-desc]', function(event){
+    event.preventDefault();
+    var profileId = $(this).data("id");
+    console.log(profileId);
+
+    $.ajax({
+      method: 'PATCH',
+      url: url + '/profiles/' + profileId,
+      headers: {
+        Authorization: 'Token token=' + token
+      },
+      contentType: 'application/json',
+      data: JSON.stringify({
+        profile: {
+          description: $('[data-field=description][data-id=' + profileId + ']').val()
+        }
+      }),
+      dataType: 'json'
+    }).done(function(data){
+      $(event.target).parent().parent().children().children(".profile").show();
+      $(event.target).parent().parent().children().children().children(".profile").hide();
+      $(event.target).parent().parent().children().children().children(".profile-input").hide();
+    }).fail(function(){
+      console.log('error');
+    });
   });
 
   // CREATE LISTING
@@ -218,10 +227,38 @@ $(document).ready(function(){
   });
 
   // UPDATE LISTING
+  $('.profile-page').on('click', 'button[data-type=save]', function(event){
+    event.preventDefault();
+    var listingId = $(this).data("id");
 
+    $.ajax({
+      method: 'PATCH',
+      url: url + '/listings/' + listingId,
+      headers: {
+        Authorization: 'Token token=' + token
+      },
+      contentType: 'application/json',
+      data: JSON.stringify({
+          listings: {
+            title: $('[data-field=title][data-id=' + listingId + ']').val(),
+            address: $('[data-field=address][data-id=' + listingId + ']').val(),
+            description: $('[data-field=description][data-id=' + listingId + ']').val(),
+            bedrooms: $('[data-field=bedrooms][data-id=' + listingId + ']').val(),
+            bathrooms: $('[data-field=bathrooms][data-id=' + listingId + ']').val(),
+            price: $('[data-field=price][data-id=' + listingId + ']').val()
+          }
+      }),
+      dataType: 'json'
+    }).done(function(data){
+      $(event.target).parent().parent().children().children(".list-name").show();
+      $(event.target).parent().parent().children().children(".list-input").hide();
+    }).fail(function(){
+      console.log('error');
+    });
+  });
 
   // DELETE LISTING
-  $('.profile-page').on("click", "button[data-type=delete]", function(event) {
+  $('.profile-page').on('click', 'button[data-type=delete]', function(event) {
         event.preventDefault();
         var listingId = $(this).data("id");
 
@@ -235,7 +272,7 @@ $(document).ready(function(){
           dataType: 'json'
         }).done(function(){
           $(event.target).parent().parent().children().children(".list-name").hide();
-          $(event.target).parent().parent()
+          $(event.target).parent().parent().children().children(".img").hide();
         }).fail(function(){
           console.log("error");
         });

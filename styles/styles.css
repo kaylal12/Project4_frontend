@@ -160,7 +160,17 @@ li a:hover {
   top: 25%;
   margin: 0 auto;
   background-color: rgba(0,0,0,0.75);;
-  /*opacity: 0.6;*/
+  color: white;
+}
+
+.about h1 {
+  text-indent: 75px;
+  text-align: center;
+  font-size: 48px;
+}
+
+.about p {
+  text-align: center;
 }
 
 /* SIGN UP BUTTON */
@@ -182,7 +192,7 @@ li a:hover {
 }
 
 /* SEARCH */
-.search-box {
+/*.search-box {
   box-sizing: border-box;
   width: 100%;
   background: #fff;
@@ -190,11 +200,11 @@ li a:hover {
   border: 1px solid #ccc;
   padding: 1%;
   font: 95% Arial, Helvetica, sans-serif;
-}
+}*/
 
 /* PROFILE */
 .profile-page {
-  /*display: none;*/
+  display: none;
 }
 
 .profile-name {
@@ -218,16 +228,20 @@ li a:hover {
   border-radius: 50%;
 }
 
-#update-photo {
+.update-photo {
   position: relative;
   display: block;
-  left: 20px;
+  left: -150px;
   top: 300px;
   opacity: 0.6;
 }
 
-#update-photo:hover {
+.update-photo:hover {
   opacity: 1;
+}
+
+.profile-input {
+  display: none;
 }
 
 .description {
@@ -246,6 +260,32 @@ li a:hover {
   height: 200px;
   top: 10%;
   margin: 0 auto;
+}
+
+.list-input {
+  display: none;
+}
+
+/* LISTINGS TABLE IN PROFILE */
+table {
+  position: relative;
+  top: 100px;
+  left: 150px;
+  /*border: 1px solid black;*/
+}
+
+th {
+  text-align: center;
+}
+
+tr {
+  border-bottom : 1px solid black;
+}
+
+td {
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
 }
 
 /* CREATE FORM */
@@ -301,5 +341,10 @@ li a:hover {
 /* FINDING LISTINGS */
 .find {
   display: none;
+}
+
+.listings {
+  padding: 10px;
+  text-align: center;
 }
 
