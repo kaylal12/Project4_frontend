@@ -1,6 +1,6 @@
 $(document).ready(function(){
-  // var url = 'https://limitless-thicket-8204.herokuapp.com';
-  var url = 'http://localhost:3000';
+  var url = 'https://agile-brook-1884.herokuapp.com';
+  // var url = 'http://localhost:3000';
   var awsurl = 'https://s3.amazonaws.com/wdi-project4/images/medium/';
   var id = '';
   var token = '';
