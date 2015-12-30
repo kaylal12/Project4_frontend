@@ -1,3 +1,7 @@
+html {
+  font-family: tahoma;
+}
+
 /* HEADER NAV */
 header {
   width: 100%;
@@ -31,7 +35,7 @@ li a {
 }
 
 li a:hover {
-  background-color: #111;
+  background-color: #99CED4;
 }
 
 .login {
@@ -164,13 +168,16 @@ li a:hover {
 }
 
 .about h1 {
-  text-indent: 75px;
+  /*text-indent: 75px;*/
   text-align: center;
-  font-size: 48px;
+  font-size: 55px;
+  padding: 10px;
 }
 
 .about p {
   text-align: center;
+  padding: 10px;
+  font-size: 20px;
 }
 
 /* SIGN UP BUTTON */
